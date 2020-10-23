@@ -46,7 +46,7 @@
 		global $lang, $db, $mybb;
 		require MYBB_ROOT.'inc/adminfunctions_templates.php';
 
-		// New form header with proper hidden field for post_code. 
+		// This is our replacement form header compliant with MyBB 1.8.17+
 		$replacement = 	'<form method="post" action="{$mybb->settings[\'bburl\']}/member.php">
 		<input name="my_post_key" type="hidden" value="{$mybb->post_code}" />';
 
@@ -122,6 +122,7 @@
 			'<form action="member.php" method="post"/>',
 			'<form action=\'member.php\' method=\'post\' />',
 			'<form action=\'member.php\' method=\'post\'/>',
+			
 			// Reverse attribute order
 			'<form method="post" action="member.php">',
 			'<form method=\'post\' action=\'member.php\'>',
@@ -136,6 +137,7 @@
 		);  
 
 		// ^^^^^^^ This, ladies and gentlemen, is why Regex exists. ^^^^^^^^^
+		// (As ugly as the above code is, we're purposefully avoiding regex to ensure that only specific changes are made. As amazing as Regex is, it loves to match things. And we don't want it to match blindly; We'd inadvertently risk breaking a theme with malformed tags! )
 
 		// Finally, run the replacements. 
 		foreach ($templates_to_fix as $t) {
@@ -151,7 +153,7 @@
 
 	/*  This is a new version of the template editing function included with MyBB. (See adminfunctions_templates.php)
 		We are using str_replace instead of preg_replace because the strings are extremely specific. 
-		This reduces the risk of inadvertantly editing aspects of the theme that are unrelated to the post code. 
+		This reduces the risk of inadvertently editing aspects of the theme that are unrelated to the post code. 
 
 		More importantly, however, we check to see if the theme already has the {$post-code} before...
 		... we add it to the template. If so, we skip it. This prevents us from adding double 
