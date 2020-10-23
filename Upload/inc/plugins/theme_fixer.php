@@ -137,7 +137,7 @@
 	
 	
 	function theme_fixer_deactivate () {
-		return; // Patches have no undo functionality at this time. 
+		return; // Patches have no undo functionality. We don't want to "unpatch" a theme. 
 	}
 
 
@@ -202,8 +202,7 @@
 			{
 				// Update the rest of our template sets that are currently inheriting this template from our master set
 				$query = $db->simple_select("templatesets", "sid", "sid NOT IN (".implode(',', $template_sets).") AND (sid{$sqlwhere2})");
-				while($template = $db->fetch_array($query))
-				{
+				while($template = $db->fetch_array($query)) {
 					$insert_template = array(
 						"title" => $db->escape_string($master_template['title']),
 						"template" => $db->escape_string($master_template['new_template']),
