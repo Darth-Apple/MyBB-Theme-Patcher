@@ -20,11 +20,19 @@
 	}
 	
 	function theme_fixer_info() {
-		global $lang;
+		global $lang, $cache;
 		$lang->load("theme_fixer");
+
+		$activePlugins = $cache->read("plugins"); 
+		$description = $lang->theme_fixer_desc; 
+		
+		if (in_array("theme_fixer" ,$activePlugins['active'])) {
+			$description = $lang->theme_fixer_desc_active;
+		}
+		
 		return array (
 			'name'			=> $lang->theme_fixer,
-			'description'	=> $lang->theme_fixer_desc,
+			'description'	=> $description,
 			'website'		=> 'http://community.mybb.com',
 			'author'		=> 'Darth Apple',
 			'authorsite'	=> 'http://www.makestation.net',
