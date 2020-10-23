@@ -23,7 +23,7 @@ To install/Patch:
   INSTALLING NEW THEMES 
 --------------------------------------
 
- - Each time this plugin is run, it will fix all existing themes on your MyBB install (as needed). However, it cannot patch future themes unless the patch is run again. If you install a new theme that has not been updated for MyBB 1.8.16 (or newer), simply deactivate and reactivate this plugin to patch again. 
+ - Each time this plugin is run, it will fix all existing themes on your MyBB install (as needed). However, it cannot patch future themes unless the patch is run again. If you install a new theme that has not been updated for MyBB 1.8.16 (or newer), simply deactivate and reactivate this plugin to patch your new theme.
 
  - You may safely run this plugin as many times as needed. It will automatically skip any themes that have already been fixed (either manually or by the developer). 
 
@@ -34,9 +34,9 @@ To install/Patch:
  - You may simply de-activate the plugin once the patches are completed. The patches will remain in place!
 
 
-----------------------------
+-------------------------------------
    TROUBLESHOOTING: 
-----------------------------
+-------------------------------------
 
  - This plugin works by detecting whether the required "{$mybb->post_code}" field exists in four templates: error_nopermission, header_welcomeblock_guest, member_login, and portal_welcome_guesttext. If this variable is not found, it automatically adds this field above the form's opening tag in order to patch the templates as necessary. 
 
