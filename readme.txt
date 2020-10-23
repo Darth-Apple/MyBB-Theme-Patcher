@@ -1,9 +1,9 @@
-This plugin attempts to resolve "authorization mismatch errors" that exist in a number of older themes for MyBB. These fixes are necessary if you are unable to log in to your forum after updating to 1.8.16 (or after installing an older theme). These patches will be applied automatically upon activation and should resolve these issues on most themes!
+This plugin attempts to resolve "authorization mismatch errors" that exist in a number of older themes for MyBB. These fixes are necessary if you are unable to log in to your forum after updating to 1.8.16 (or after installing an older theme). These patches will be applied automatically and should resolve issues on most themes! 
 
-Please keep in mind that this plugin cannot patch other theme issues unrelated to login-related problems. Any further updates/fixes will need to be made manually. However, this provides a best-faith effort to resolve issues that prevent users from logging on to your forum. This should resolve most such errors successfully. :)
+Please note that this plugin cannot fix other theme issues unrelated to login problems. It can ONLY fix authorization mismatch errors. If you encounter any additional non-login related problems upon installing an older theme, these fixes will need to be applied manually. 
 
 
-*** Note that you DO NOT need to run this plugin on any theme that was developed for a MyBB version of 1.8.16 or newer. These themes are already patched.
+*** Note that you DO NOT need to run this plugin on any theme that was developed for a MyBB version of 1.8.16 or newer. These themes are already patched!
 
 
 --------------------------------------
@@ -25,36 +25,34 @@ To install/Patch:
 
  - Each time this plugin is run, it will fix all existing themes on your MyBB install (as needed). However, it cannot patch future themes unless the patch is run again. If you install a new theme that has not been updated for MyBB 1.8.16 (or newer), simply deactivate and reactivate this plugin to patch again. 
 
+ - You may safely run this plugin as many times as needed. It will automatically skip any themes that have already been fixed (either manually or by the developer). 
+
 --------------------------------------
    UNINSTALLATION INSTRUCTIONS 
 --------------------------------------
 
- - You may simply de-activate the plugin once the patches are completed. The patches will remain in place. 
+ - You may simply de-activate the plugin once the patches are completed. The patches will remain in place!
 
 
 ----------------------------
- TROUBLESHOOTING: 
+   TROUBLESHOOTING: 
 ----------------------------
-
- - If your themes still display "authorization mismatch errors" after running this plugin, you will need to patch your themes manually. This may occasionally occur on certain highly modified themes if this plugin is unable to make sense of your theme's login-related templates. If this occurs, see this post for more information on how to fix your theme! https://community.mybb.com/thread-218862.html
-
- - Patches will remain in place following routine MyBB updates. However, master templates may occasionally be reverted if a specific template was updated on a new release of MyBB. If authorization mismatch errors re-occur, simply de-activate and re-activate this plugin to re-run the script as needed.
-
-
---------------------------------------
-   SOME USEFUL INFO 
---------------------------------------  
 
  - This plugin works by detecting whether the required "{$mybb->post_code}" field exists in four templates: error_nopermission, header_welcomeblock_guest, member_login, and portal_welcome_guesttext. If this variable is not found, it automatically adds this field above the form's opening tag in order to patch the templates as necessary. 
 
- - This plugin will automatically detect any theme that has already been patched (whether manually or by the developer). It will safely skip any theme that does not require patches. You may safely run this plugin as many times as needed! 
+ - If your themes still display "authorization mismatch errors" after running this plugin, you will need to patch your themes manually. If this occurs, see this post for more information on how to fix your theme: https://community.mybb.com/thread-218862.html
 
- - Kindly translated to German by @tc4me at https://autism4all.at - This plugin includes both German and English language packs, no external language pack is necessary! 
+
+--------------------------------------
+   OTHER INFORMATION: 
+--------------------------------------  
+
+ - Kindly translated to German by @tc4me at https://autism4all.at! This plugin includes both German and English language packs, no external language pack is necessary.
+
+ - It is always good practice to back up your database or theme before running any plugin that modifies your templates! Although we have tested this plugin thoroughly, it is merely a best-faith effort to resolve login-related problems on most older themes. We cannot guarantee that it will work with every single theme!  
 
 	 
 Licence & Copyright: 
-
- - You may port this plugin to future MyBB releases and redistribute as needed (according to the terms of the GPL v3 license). If you distribute a forked or modified version, my only request is that you leave credit and a link back to the original! :)
 
 
  /*     This file is part of Theme Patcher
